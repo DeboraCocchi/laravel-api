@@ -1,0 +1,161 @@
+@import '~bootstrap/scss/bootstrap';
+
+a{
+    color:white;
+    text-decoration: none;
+    transition: all .2s ease-in-out;
+
+    &:hover{
+        color:#ffc107;
+    }
+}
+
+.aside-section{
+    padding-top:70px;
+    width:12vw;
+    height:calc(100vh - 75px);
+    position:fixed;
+    left:0;
+    bottom:0;
+    z-index:10;
+}
+
+body{
+    background-color: rgba(238, 238, 238, 0.9);
+}
+
+.main-content{
+    position:relative;
+    min-height:100vh;
+    overflow-y:hidden;
+    overflow-x: hidden;
+
+
+    main .dc-proj{
+        padding:0px 40px 100px 15vw;
+        overflow-y:hidden;
+        overflow-x: hidden;
+        img.card-img-top{
+            max-height:160px;
+            width:auto;
+        }
+    }
+    main{
+
+        position:relative;
+        top:80px;
+        padding-top:30px;
+        overflow-y:hidden;
+    }
+    .dc-proj-image.card-img-top{
+        max-height:300px;
+        width:auto;
+    }
+}
+
+header{
+    height:120px;
+    width:100vw;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:90;
+    overflow: hidden;
+    nav{
+        &.admin{
+            background-color:  rgb(18,19,22);
+        }
+        &.guest{
+            background-color: aliceblue;
+    }
+    }
+    & *{
+        max-height:100%;
+    }
+    img.logo-dvora{
+        height:50px;
+    }
+    .navbar {
+
+        ul.dropdown-menu[data-bs-popper]{
+            background-color: #ffc107;
+            left:calc(100% - 170px);
+            width:140px;
+            position:absolute;
+            z-index:95;
+            a.dropdown-item:hover{
+                color:white;
+                background-color: #ffc107;
+                border-radius:0.5rem;
+
+        }
+
+    }
+    }
+}
+
+.aside-menu{
+    background-color: rgb(18,19,22);
+
+
+    ul{
+        list-style: none;
+
+    }
+    .settings-area{
+
+        &::before{
+            content:'';
+            display:block;
+            color:white;
+            width:100%;
+            border:1px solid white;
+            margin:0 auto 25px;
+        }
+
+    }
+}
+
+.home-profile{
+    p{
+        font-size:130%;
+    }
+}
+
+
+
+footer{
+    height:100px;
+    padding:10px;
+    background-color: black;
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100vw;
+    img{
+        height:100%;
+    }
+}
+
+.logout-btn{
+    width:140px;
+}
+
+img.show-proj-img{
+    max-width:400px;
+}
+
+.card.position-relative{
+    span.badge{
+        right:8px;
+        top:8px;
+    }
+    img.card-img-top{
+        max-height:60%;
+        object-fit: cover;
+    }
+    .card-body{
+        min-height: 40%;
+    }
+
+}
