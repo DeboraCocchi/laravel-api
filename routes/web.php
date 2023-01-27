@@ -39,4 +39,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('{any?}', function(){
+    return view('guest.home');})->where('any', '.*')->name('home');
 require __DIR__.'/auth.php';

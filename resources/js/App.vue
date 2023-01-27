@@ -1,5 +1,8 @@
 <script>
-import axios from 'axios'
+
+import AppHeader from './partials/AppHeader.vue'
+import Home from './pages/Home.vue'
+import Projects from './pages/Projects.vue'
 export default {
     name:'App',
     data(){
@@ -8,24 +11,17 @@ export default {
         projects_collection:[]
         }
     },
-    methods:{
-        getProjects(){
-        axios.get(store.apiUrl)
-        .then(result =>{
-            console.log(result.data.projects.data);
-            this.projects_collection= result.data.projects.data;
-        })
-        .catch( err=>{
-            console.log('Si è verificato un errore');
-        })
-        },
-  },
-    mounted(){
-        this.getProjects();
-    }
+    components:{
+        AppHeader,
+        Projects
+    },
+
 }
 </script>
 <template>
+<AppHeader />
+<router-view></router-view>
+<Projects />
 
 
 

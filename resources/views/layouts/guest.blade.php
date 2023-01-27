@@ -13,29 +13,19 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
         <!-- Scripts -->
-        @vite(['resources/css/appVue.scss', 'resources/js/appVue.js'])
+        @vite(['resources/scss/appVue.scss', 'resources/js/appVue.js'])
     </head>
 
     <body class="font-sans text-gray-900 antialiased">
 
         <div id="app">
-        @include('partials.header')
-        <main>
-            @yield('content')
-        </main>
+            {{-- @include('partials.header')
+            <main>
+                @yield('content')
+            </main> --}}
 
-        {{-- <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
-            <div>
-                <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-                </a>
-            </div>
 
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
-                {{ $slot }}
-            </div>
-        </div> --}}
 
-    </div>
+        </div>
     </body>
 </html>
