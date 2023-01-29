@@ -13,17 +13,19 @@ export default {
     },
     components:{
         AppHeader,
-        Projects
+        Home,
+        Projects,
     },
 
 }
 </script>
 <template>
-<AppHeader />
-<router-view></router-view>
-<Projects />
+    <AppHeader />
+    <main>
+    <router-view></router-view>
 
 
+    </main>
 
 </template>
 

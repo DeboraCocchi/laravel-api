@@ -4,7 +4,10 @@ export default {
 }
 </script>
 <template>
-<h2>Questa è la home</h2>
+
+ <h2>Questa è la home</h2>
+
+
 </template>
 
 
