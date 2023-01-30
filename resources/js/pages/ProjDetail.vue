@@ -1,7 +1,8 @@
 
 <script>
     import axios from 'axios'
-    import {apiUrl} from '../data'
+    import {apiUrl} from '../data/data'
+
 
     export default {
         name: 'About',
@@ -10,6 +11,7 @@
                 apiUrl,
                 project: []
             }
+
         },
         methods:{
             getProjects(){

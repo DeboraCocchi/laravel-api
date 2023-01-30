@@ -1,16 +1,20 @@
 <script>
 import axios from 'axios'
-import {apiUrl} from '../data'
+import {apiUrl} from '../data/data'
+import {store} from '../data/store'
+import FormSearch from '../components/FormSearch.vue'
 import ProjectCard from '../components/ProjectCard.vue'
 export default {
     name:'Projects',
     components:{
+    FormSearch,
     ProjectCard
   },
     data(){
         return{
             apiUrl,
-            projects_collection:[]
+            store
+
         }
     },
     methods:{
@@ -19,7 +23,7 @@ export default {
 
         .then(result =>{
              console.log(result.data);
-            this.projects_collection= result.data;
+            store.projects= result.data;
         })
         .catch( err=>{
             console.log('Si è verificato un errore');
@@ -34,10 +38,15 @@ export default {
 <template>
 
     <main>
+
         <div class="container-fluid">
-        <h1>I miei progetti</h1>
+            <div class="d-flex justify-content-between">
+                <h1>I miei progetti</h1>
+                <FormSearch />
+            </div>
+
             <div class="row justify-content-between">
-            <ProjectCard v-for="project in this.projects_collection" :project="project" :key="project.id"></ProjectCard>
+            <ProjectCard v-for="project in store.projects" :project="project" :key="project.id"></ProjectCard>
         </div>
 
         <div class="paginator">
