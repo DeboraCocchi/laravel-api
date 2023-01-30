@@ -1,5 +1,8 @@
 @use 'node_modules/bootstrap/scss/bootstrap';
 
+html {
+    scroll-behavior: smooth;
+  }
 
 a{
     color:white;
@@ -21,12 +24,16 @@ a{
     z-index:10;
 }
 
+
+
 body{
-    background-color: rgba(238, 238, 238, 0.7);
+    background-color: rgba(216, 211, 211, 0.8);
 }
 
 main{
-    padding:90px 30px 30px;
+    position:relative;
+    top:60px;
+    padding:30px 50px 50px;
 
 }
 

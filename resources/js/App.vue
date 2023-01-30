@@ -21,11 +21,11 @@ export default {
 </script>
 <template>
     <AppHeader />
-    <main>
+
     <router-view></router-view>
 
 
-    </main>
+
 
 </template>
 

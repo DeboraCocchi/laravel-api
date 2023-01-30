@@ -19,7 +19,7 @@ class ProjectsTableSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        $data=file_get_contents('https://api.unsplash.com/photos/?client_id=zFO00llXRisd8ahLBB4h7xojiShSikegbjnnb0weK30&width=300&height=300');
+        $data=file_get_contents('https://api.unsplash.com/photos/?client_id=zFO00llXRisd8ahLBB4h7xojiShSikegbjnnb0weK30&width=300&height=300&per_page=30');
         $data=json_decode($data);
 
         for($i=0; $i<30; $i++){
@@ -36,7 +36,7 @@ class ProjectsTableSeeder extends Seeder
                 $new_project->cover_image=$data[0]->urls->small;
             }
 
-            $new_project->save();
+             $new_project->save();
         }
     }
 }

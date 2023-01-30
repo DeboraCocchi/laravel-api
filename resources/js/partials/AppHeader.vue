@@ -23,6 +23,7 @@ export default {
 <style lang="scss" scoped>
   header{
     position:fixed;
+    z-index: 90;
     left:0;
     top:0;
     width:100vw;
@@ -32,6 +33,7 @@ export default {
     justify-content:space-between;
     align-items:center;
     border-bottom:1px solid aliceblue;
+    overflow-y:hidden;
     nav{
       height:100%;
       padding:0px 30px;

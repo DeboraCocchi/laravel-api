@@ -33,22 +33,26 @@ export default {
 </script>
 <template>
 
+    <main>
+        <div class="container-fluid">
+        <h1>I miei progetti</h1>
+            <div class="row justify-content-between">
+            <ProjectCard v-for="project in this.projects_collection" :project="project" :key="project.id"></ProjectCard>
+        </div>
 
-<div class="container-fluid">
-<h2>I miei progetti</h2>
-    <div class="row justify-content-between">
-    <ProjectCard v-for="project in this.projects_collection" :project="project" :key="project.id"></ProjectCard>
-  </div>
+        <div class="paginator">
 
-  <div class="paginator">
+        </div>
+        </div>
 
-  </div>
-</div>
+    </main>
 
 
 </template>
 
 
 <style lang="scss" scoped>
-
+    h1{
+        color:#3a0764;
+    }
 </style>

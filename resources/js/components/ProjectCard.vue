@@ -19,16 +19,16 @@ export default {
 <div class="dc-card my-3 p-0">
     <router-link :to="{name: 'project-detail', params:{ slug: project.slug} }">
         <div class="content-card h-100 w-100">
-      <img :src="project.cover_image" class="card-img-top" :alt="project.image_original_name">
-      <div class="card-body">
-        <h4 class="card-title mb-1 text-black">{{project.name}}</h4>
-        <h5 class="card-title mb-1">{{project.client_name}}</h5>
-        <p class="card-text text-black m-0">{{this.cutText(project.summary)}}</p>
-        <div class="technologies p-1 m-0">
-          <span v-for="technology in project.technologies" :key="technology.id" class="badge">{{technology.name}}</span>
+            <img :src="project.cover_image" class="card-img-top" :alt="project.image_original_name">
+            <div class="card-body">
+                <h4 class="card-title mb-1 text-black">{{project.name}}</h4>
+                <h5 class="card-title mb-1">{{project.client_name}}</h5>
+                <p class="card-text text-black m-0">{{this.cutText(project.summary)}}</p>
+                <div class="technologies p-1 m-0">
+                <span v-for="technology in project.technologies" :key="technology.id" class="badge">{{technology.name}}</span>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
     </router-link>
 
 
@@ -40,9 +40,14 @@ export default {
   .dc-card{
     width:18%;
     border-radius:0.8rem;
-    box-shadow: 6px 8px 3px rgba(0, 0, 0, 0.187);
+    box-shadow: 10px 8px 10px rgba(#3a0764, 0.3);
+    transition: all .3s ease-in-out;
+    &:hover{
+        transform: scale(105%);
+    }
     .content-card{
       background-color:aliceblue;
+      border-radius:0.8rem;
       .card-body{
         text-align: center;
         padding:20px;
@@ -71,6 +76,7 @@ export default {
       width:100%;
       max-height:200px;
       object-fit: cover;
+      object-position: center;
       border-top-left-radius:0.8rem;
       border-top-right-radius:0.8rem;
     }

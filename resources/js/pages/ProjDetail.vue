@@ -13,7 +13,7 @@
         },
         methods:{
             getProjects(){
-                console.log(this.$route.params);
+                console.log(this.$route.params)
             axios.get(apiUrl+this.$route.params.slug)
             .then(result =>{
                 console.log(result.data);
@@ -51,39 +51,50 @@
 
 
 <template>
-    <div class="container-fluid">
-        <div class="d-flex justify-content-between my-4">
-            <h1>Pagina di dettaglio progetto <span class="text-warning">{{this.project.name}}</span></h1>
-            <router-link :to="{name: 'projects'}" class="purple"><i class="fa-solid fa-rotate-left"></i> Torna all'elenco progetti</router-link>
+    <div class="main-wrapper">
+        <div class="glass-container">
+            <div class="container-fluid">
+
+                <div class="d-flex justify-content-between my-4">
+                    <h1>Pagina di dettaglio progetto <span class="purple">{{this.project.name}}</span></h1>
+                    <router-link :to="{name: 'projects'}" class="darkpurple"><i class="fa-solid fa-rotate-left"></i> Torna all'elenco progetti</router-link>
+                </div>
+
+                <div class="row">
+                    <div class="col-3">
+                        <img :src="project.cover_image" :alt="project.name">
+                    </div>
+                    <div class="col-8 ms-3 mt-3">
+                        <h2><span class="purple me-3">Title: </span>{{project.name}}</h2>
+                        <span v-if="project.type" class="badge text-bg-warning  d-inline-block mb-3">{{project.type.name}}</span>
+
+                            <h4 class=""><span class="purple me-3">Client: </span>{{project.client_name}}</h4>
+
+
+
+                        <p><span class="purple me-3">Created on: </span>{{manipulateDate(project.created)}}</p>
+
+                        <p>
+                            <span class="purple me-3">Summary: </span>
+                            <span v-html="project.summary"></span>
+                        </p>
+                        <div class="container technologies d-flex p-0">
+                            <span class="purple me-3">Technologies: </span>
+                            <ul class=" px-3 list-unstyled" v-if="project.technologies">
+
+                                <li v-for=" technology in project.technologies" :key="technology.id">
+                                    {{technology.name}}
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
         </div>
 
-        <div class="row">
-            <div class="col-3">
-                <img :src="project.cover_image" :alt="project.name">
-            </div>
-            <div class="col-8 ms-3">
-                <h2><span class="purple">Title: </span>{{project.name}}</h2>
-                 <span v-if="project.type" class="badge text-bg-primary  d-inline-block mb-3">{{project.type.name}}</span>
-
-                    <h6 class=""><span class="purple">Client: </span>{{project.client_name}}</h6>
-
-
-
-                <p><span class="purple">Created on: </span>{{manipulateDate(project.created)}}</p>
-
-                <p>
-                    <span class="purple">Summary: </span>
-                    <span v-html="project.summary"></span>
-                </p>
-                <ul class="technologies p-0 list-unstyled" v-if="project.technologies">
-                    <span class="purple">Technologies: </span>
-                    <li v-for=" technology in project.technologies" :key="technology.id">
-                        {{technology.name}}
-                    </li>
-                </ul>
-            </div>
-
-        </div>
     </div>
 
 </template>
@@ -91,21 +102,49 @@
 
 
 <style lang="scss" scoped>
+    .main-wrapper{
+        background-image: url('https://images.unsplash.com/photo-1612885488634-0a698136fed9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
+        background-color: rgba(255,255,255,0.3);
+        background-repeat: no-repeat;
+        background-size: cover;
+        width:100vw;
+        padding:100px 0;
+        height:100vh;
+        position:relative;
+        bottom:0;
+        overflow:hidden;
+        .glass-container{
+        background-color: rgba(255,255,255,0.8);
+        box-shadow: 8px 6px 5px rgba(0,0,0,0.4);
+        padding:20px;
+        border-radius:0.8rem;
+        width:70%;
+        margin:40px auto;
+    .col-8 span, .col-8 p{
+        font-size:110%;
+    }
+        }
     .purple{
           color:#9160f5;
-    }
-    a.purple{
+        }
+        .darkpurple{
+            color:#3a0764;
+        }
+    a.darkpurple{
 
             transition:all .2s ease-in-out;
             &:hover{
             color:#ffc107;
             text-decoration:underline;
-    }
+            }
         }
     img{
         min-height: 400px;
         width:auto;
         max-width: 100%;
         object-fit: cover;
-     }
+        margin:10px;
+        }
+    }
+
 </style>
