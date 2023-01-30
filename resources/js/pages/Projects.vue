@@ -18,8 +18,8 @@ export default {
             axios.get(apiUrl)
 
         .then(result =>{
-
-            this.projects_collection= result.data.projects.data;
+             console.log(result.data);
+            this.projects_collection= result.data;
         })
         .catch( err=>{
             console.log('Si è verificato un errore');
@@ -36,7 +36,7 @@ export default {
 
 <div class="container-fluid">
 <h2>I miei progetti</h2>
-    <div class="row">
+    <div class="row justify-content-between">
     <ProjectCard v-for="project in this.projects_collection" :project="project" :key="project.id"></ProjectCard>
   </div>
 

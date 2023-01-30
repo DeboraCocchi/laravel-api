@@ -19,9 +19,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('projects',[ProjectController::class, 'index']);
+// Route::get('projects',[ProjectController::class, 'index']);
 
 
-Route::get('/{slug}',[PostController::class, 'show']);
+// Route::get('/{slug}',[ProjectController::class, 'show']);
 
 
+Route::namespace('Api')
+    ->prefix('projects')
+    ->group(function(){
+        Route::get('/',[ProjectController::class, 'index']);
+        Route::get('/{slug}',[ProjectController::class, 'show']);
+
+    });

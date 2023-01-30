@@ -13,19 +13,20 @@ class ProjectController extends Controller
     public function index(){
         // $types=Type::all();
         // $technologies=Technology::all();
-        $projects=Project::with(['type','technologies'])->orderBy('id', 'desc')->paginate(10);
+        $projects=Project::with(['type','technologies'])->orderBy('id', 'desc')->get();
 
-        return response()->json(compact('projects'));
+        return response()->json($projects);
     }
 
     public function show($slug)
     {
        $project=Project::where('slug', $slug)->with(['type','technologies'])->first();
+
        if($project->cover_image){
-           $project->cover_image=url('storage/'.$project->image);
+           $project->cover_image=url($project->cover_image);
        }else{
         $project->cover_image=url('storage/uploads/placeholder.png');
        }
-       return response()->json(compact('projects'));
+       return response()->json($project);
     }
 }

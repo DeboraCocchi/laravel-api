@@ -7,7 +7,7 @@ export default {
     },
     methods:{
         cutText(text){
-            if(text.length > 100){
+            if(text.length > 80){
                 text=text.slice(0, 100)+'...'
       }
       return text
@@ -18,13 +18,13 @@ export default {
 <template>
 <div class="dc-card my-3">
     <router-link :to="{name: 'project-detail', params:{ slug: project.slug} }">
-        <div class="content-card">
+        <div class="content-card h-100 w-100">
       <img :src="project.cover_image" class="card-img-top" :alt="project.image_original_name">
       <div class="card-body">
         <h4 class="card-title mb-2 text-black">{{project.name}}</h4>
         <h5 class="card-title mb-2">{{project.client_name}}</h5>
         <p class="card-text text-black">{{this.cutText(project.summary)}}</p>
-        <div class="technologies">
+        <div class="technologies p-3 m-0">
           <span v-for="technology in project.technologies" :key="technology.id" class="badge">{{technology.name}}</span>
         </div>
       </div>
@@ -38,14 +38,16 @@ export default {
 
 <style lang="scss" scoped>
   .dc-card{
-    width:calc(100% / 5);
-    padding:5px;
+    width:18%;
+
+    border-radius:0.8rem;
+    box-shadow: 3px 3px rgba(0,0,0,0.4);
     .content-card{
-      border-radius:0.8rem;
+
       background-color:aliceblue;
       .card-body{
         text-align: center;
-        padding:10px;
+        padding:20px;
 
         h5.card-title{
              color:#9160f5;
@@ -71,7 +73,7 @@ export default {
     }
     img{
       width:100%;
-      height:auto;
+      height:50%;
       object-fit: cover;
     }
   }

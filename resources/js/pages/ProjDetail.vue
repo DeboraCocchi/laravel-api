@@ -7,23 +7,27 @@ export default {
     data(){
         return{
             apiUrl,
-            project: {}
+            project: []
         }
     },
     methods:{
         getProjects(){
-        axios.get(apiUrl+'/'+this.$route.params)
-        .then(result =>{
             console.log(this.$route.params);
+        axios.get(apiUrl+this.$route.params.slug)
+        .then(result =>{
             console.log(result.data);
             this.project= result.data;
         })
         .catch( err=>{
             console.log('Si è verificato un errore');
         })
+        },
+        reverseDate(date){
+            return date.split("-").reverse().join("/")
         }
     },
     mounted(){
+        console.log(this.project);
         this.getProjects()
     }
 }
@@ -31,19 +35,53 @@ export default {
 </script>
 <template>
     <div class="container-fluid">
-        <h1>Pagina di dettaglio</h1>
+        <div class="d-flex justify-content-between my-4">
+            <h1>Pagina di dettaglio progetto <span class="text-warning">{{this.project.name}}</span></h1>
+            <router-link :to="{name: 'projects'}" class="purple"><i class="fa-solid fa-rotate-left"></i> Torna all'elenco progetti</router-link>
+        </div>
+
         <div class="row">
-            <div class="col-4">
-                <img :src="project.image" :alt="project.name">
+            <div class="col-3">
+                <img :src="project.cover_image" :alt="project.name">
             </div>
-            <div class="col-8">
-                <h2>{{project.name}}</h2>
+            <div class="col-9">
+                <h2><span class="purple">Title: </span>{{project.name}}</h2>
+                 <span v-if="project.type" class="badge text-bg-primary  d-inline-block mb-3">{{project.type.name}}</span>
+
+                    <h6 class=""><span class="purple">Client: </span>{{project.client_name}}</h6>
+
+
+
+                <p><span class="purple">Created on: </span>{{reverseDate(project.created)}}</p>
+
+                <p>
+                    <span class="purple">Summary: </span>
+                    <span v-html="project.summary"></span>
+                </p>
+                <ul class="technologies p-0 list-unstyled" v-if="project.technologies">
+                    <span class="purple">Technologies: </span>
+                    <li v-for=" technology in project.technologies" :key="technology.id">
+                        {{technology.name}}
+                    </li>
+                </ul>
             </div>
+
         </div>
     </div>
+
 </template>
 
 
-<style>
+<style lang="scss" scoped>
+    .purple{
+          color:#9160f5;
+    }
+    a.purple{
 
+            transition:all .2s ease-in-out;
+            &:hover{
+            color:#ffc107;
+            text-decoration:underline;
+    }
+        }
 </style>
