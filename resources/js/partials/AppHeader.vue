@@ -6,7 +6,8 @@ export default {
 <template>
   <header class="">
     <nav>
-    <img src="/img/logo-annidato-bn.png" alt="" class="logo">
+        <router-link :to="{name: 'home'}"><img src="/img/logo-annidato-bn.png" alt="logo" class="logo"></router-link>
+
       <ul class="p-0 m-0 d-flex">
         <li class="me-3">
           <router-link :to="{name: 'home'}">Home</router-link>
@@ -27,12 +28,13 @@ export default {
     left:0;
     top:0;
     width:100vw;
-    height:60px;
+    height:70px;
     padding:10px 20px;
     background-color: white;
     justify-content:space-between;
     align-items:center;
-    border-bottom:1px solid aliceblue;
+    box-shadow: 1px 0 3px rgba(100,108,254, 0.7);
+    // border-bottom:1px solid rgba(100,108,254, 0.7);
     overflow-y:hidden;
     nav{
       height:100%;

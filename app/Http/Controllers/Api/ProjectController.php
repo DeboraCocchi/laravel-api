@@ -11,11 +11,11 @@ use Illuminate\Http\Request;
 class ProjectController extends Controller
 {
     public function index(){
-        // $types=Type::all();
-        // $technologies=Technology::all();
-        $projects=Project::with(['type','technologies'])->orderBy('id', 'desc')->get();
+        $types=Type::all();
+        $technologies=Technology::all();
+        $projects=Project::with(['type','technologies'])->orderBy('id', 'desc')->paginate(10);
 
-        return response()->json($projects);
+        return response()->json(compact('projects'));
     }
 
     public function show($slug)
@@ -32,7 +32,7 @@ class ProjectController extends Controller
 
     public function search(){
         $tosearch=$_POST['tosearch'];
-        $projects=Project::where('name','like', "%$tosearch%")->with(['type','technologies'])->get();
-        return response()->json($projects);
+        $projects=Project::where('name','like', "%$tosearch%")->with(['type','technologies'])->paginate(10);
+        return response()->json(compact('projects'));
     }
 }

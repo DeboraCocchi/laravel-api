@@ -16,7 +16,8 @@
         methods:{
             getProjects(){
                 console.log(this.$route.params)
-            axios.get(apiUrl+this.$route.params.slug)
+
+            axios.get(apiUrl+'/'+this.$route.params.slug)
             .then(result =>{
                 console.log(result.data);
                 this.project= result.data;

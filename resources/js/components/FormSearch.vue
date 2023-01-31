@@ -1,6 +1,6 @@
 <script>
 import axios from 'axios'
-import {apiUrl} from '../data/data'
+import {apiUrl, showPaginator} from '../data/data'
 import {store} from '../data/store'
 export default {
     name:'FormSearch',
@@ -8,26 +8,33 @@ export default {
         return{
             apiUrl,
             tosearch:'',
+            showPaginator,
             store
+
         }
     },
     methods:{
         getApi(){
             const data= new FormData()
             data.append('tosearch', this.tosearch)
-            axios.post(apiUrl+'search', data)
+            axios.post(apiUrl+'/search', data)
             .then(res=>{
-                console.log(res.data);
-                store.projects=res.data
+                store.projects=res.data.projects.data;
+                this.showPaginator=false
                 this.tosearch=''
+                console.log(store.projects.length);
+                console.log(res.data.projects.data);
             })
-        }
+        },
+
+
+
     }
 }
 </script>
 <template>
     <div class="form-search input-group">
-        <input type="text" placeholder="Cerca..." class="form-control" v-model="this.tosearch" @keyup.enter="getApi">
+        <input type="text" placeholder="Cerca..." class="form-control" v-model="this.tosearch" @keyup.enter="getApi" >
     <button class="btn btn-outline-warning text-black" @click="getApi">Invia</button>
     </div>
 
