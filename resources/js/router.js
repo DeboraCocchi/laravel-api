@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from './pages/Home.vue'
 import Projects from './pages/Projects.vue'
 import ProjectDetail from './pages/ProjDetail.vue'
+import Contacts from './pages/Contacts.vue'
 const router = createRouter({
     history:createWebHistory(),
     linkExactActiveClass:'active',
@@ -21,11 +22,11 @@ const router = createRouter({
             name:'project-detail',
             component:ProjectDetail
         },
-        // {
-        //     path:'/tipi',
-        //     name:'types',
-        //     component:Types
-        // },
+        {
+            path:'/contatti',
+              name:'contacts',
+             component:Contacts
+     },
         // {
         //     path:'/tecnologie',
         //     name:'technologies',

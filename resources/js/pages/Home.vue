@@ -1,38 +1,28 @@
 <script>
-import axios from 'axios'
+
 export default {
     name:'Home',
     data(){
         return{
-            quote:{}
+
         }
     },
-    methods:{
-        getQuoteApi(){
-            axios.get('https://zenquotes.io/api/random')
-            .then(res=>{
-                console.log(res)
-                this.quote=res.data
-            })
-            .catch( err=>{
-                console.log('Si è verificato un errore');
-            })
-        }
-    },
-    mounted(){
-        this.getQuoteApi()
-    }
+
+
 }
 </script>
 <template>
 <main class="text-center">
-<h1 class="my-5">Benvenuto nella homepage</h1>
+    <h1 class="my-5">Benvenuto nella homepage</h1>
+    <section class="jumbotron">
 
-<img src="/img/ape-b-n.png" alt="DVORA">
-<div class="quote">
-    <h5>{{this.quote.q}}</h5>
-    <h6>{{this.quote.a}}</h6>
-</div>
+    </section>
+    <section class="quote">
+        <p class="col-md-8 fs-4 mt-5">Come l'ape raccoglie il succo dei fiori senza danneggiarne colore e profumo,<br>così il saggio dimori nel mondo. </p>
+            <h6 class="mt-5">Siddharta Gautama, Buddha</h6>
+    </section>
+
+
 </main>
 
 

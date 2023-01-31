@@ -15,6 +15,9 @@ export default {
         <li>
           <router-link :to="{name: 'projects'}">Progetti</router-link>
         </li>
+        <li>
+          <router-link :to="{name: 'contacts'}">Contattaci</router-link>
+        </li>
       </ul>
     </nav>
   </header>
