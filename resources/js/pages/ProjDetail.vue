@@ -59,15 +59,15 @@
             <div class="container-fluid">
 
                 <div class="d-flex justify-content-between my-4">
-                    <h1>Pagina di dettaglio progetto <span class="purple">{{this.project.name}}</span></h1>
-                    <router-link :to="{name: 'projects'}" class="darkpurple"><i class="fa-solid fa-rotate-left"></i> Torna all'elenco progetti</router-link>
+                    <h1>Pagina di dettaglio progetto<br> <span class="purple">{{this.project.name}}</span></h1>
+                    <router-link :to="{name: 'projects'}" class="darkpurple"><i class="fa-solid fa-rotate-left"></i> Torna all'elenco</router-link>
                 </div>
 
                 <div class="row">
-                    <div class="col-3">
+                    <div class="col-5">
                         <img :src="project.cover_image" :alt="project.name">
                     </div>
-                    <div class="col-8 ms-3 mt-3">
+                    <div class="col-6 ms-3 mt-3">
                         <h2><span class="purple me-3">Title: </span>{{project.name}}</h2>
                         <span v-if="project.type" class="badge text-bg-warning  d-inline-block mb-3">{{project.type.name}}</span>
 
@@ -105,11 +105,12 @@
 
 
 <style lang="scss" scoped>
+
+     @use '../../scss/partials/_variables.scss' as * ;
+
     .main-wrapper{
-        background-image: url('https://images.unsplash.com/photo-1612885488634-0a698136fed9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
-        background-color: rgba(255,255,255,0.3);
-        background-repeat: no-repeat;
-        background-size: cover;
+        background:linear-gradient(135deg, $yellow-darker, $yellow-lighter);
+
         width:100vw;
         padding:100px 0;
         height:100vh;
@@ -147,6 +148,7 @@
         max-width: 100%;
         object-fit: cover;
         margin:10px;
+        border-radius:0.8rem;
         }
     }
 

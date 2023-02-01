@@ -1,4 +1,5 @@
 <script>
+
 export default {
   name:'AppHeader'
 }
@@ -9,10 +10,10 @@ export default {
         <router-link :to="{name: 'home'}"><img src="/img/logo-annidato-bn.png" alt="logo" class="logo"></router-link>
 
       <ul class="p-0 m-0 d-flex">
-        <li class="me-3">
+        <li class="me-4">
           <router-link :to="{name: 'home'}">Home</router-link>
         </li>
-        <li>
+        <li class="me-4">
           <router-link :to="{name: 'projects'}">Progetti</router-link>
         </li>
         <li>
@@ -25,18 +26,19 @@ export default {
 
 
 <style lang="scss" scoped>
+@use '../../scss/partials/_variables.scss' as * ;
   header{
     position:fixed;
     z-index: 90;
     left:0;
     top:0;
     width:100vw;
-    height:70px;
+    height:80px;
     padding:10px 20px;
     background-color: white;
     justify-content:space-between;
     align-items:center;
-    box-shadow: 1px 0 3px rgba(100,108,254, 0.7);
+    box-shadow: 1px 0 3px $yellow-darker;
     // border-bottom:1px solid rgba(100,108,254, 0.7);
     overflow-y:hidden;
     nav{
@@ -52,14 +54,38 @@ export default {
         list-style:none;
         display:inline-block;
         a{
-            color:#9160f5;
-            transition:all .2s ease-in-out;
-            &:hover{
-            color:#ffc107;
-            text-decoration:underline;
-    }
+            color:$black;
+            text-transform: uppercase;
+            font-weight: bold;
+            display: block;
+          &::after{
+            content:'';
+            border-bottom:2px solid aqua;
+            padding:0 10px;
+            position:absolute;
+            bottom:0;
+            right:0;
+            left:0;
+            margin:0 auto;
+            width:0;
+            transition:all .3s ease-in-out;
         }
-      }
+        &:hover ,  &:active , &.active {
+            color:$yellow-darker;
+        }
+        &:hover::after{
+            width:100%;
+            padding:0;
+            border-bottom:2px solid $yellow-darker;
+        }
+        &:active::after, &.active::after{
+            width:100%;
+            padding:0;
+            border-bottom:2px solid $yellow-darker;
+        }
+
+
+      }}
     }
   }
 </style>

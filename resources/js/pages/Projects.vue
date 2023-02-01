@@ -70,13 +70,13 @@ export default {
 
     <main>
 
-        <div class="container-fluid">
-            <div class="d-flex justify-content-between">
-                <h1>I miei progetti</h1>
+        <div class="container-fluid mb-5 p-0">
+            <div class="d-flex justify-content-between dc-black-bg pe-5">
+                <h1 class="ms-4">I miei progetti</h1>
                 <FormSearch />
             </div>
 
-            <div class="row justify-content-between">
+            <div class="row justify-content-between px-5 py-4">
                 <ProjectCard v-for="project in store.projects" :project="project" :key="project.id"></ProjectCard>
 
 
@@ -115,21 +115,31 @@ export default {
 
 
 <style lang="scss" scoped>
-    h1{
-        color:#3a0764;
+
+    @use '../../scss/partials/_variables.scss' as * ;
+
+    .dc-black-bg{
+        background-color: $black;
+        color:$yellow-lighter;
+        width:100vw;
+        padding:24px 90px;
+        align-items: center;
+        h1{
+            color:$yellow-lighter;
+        }
     }
     .pagination{
         button{
-            border-color: #636dff;
-            color:#3a0764;
+            border-color: rgba(0, 0, 0, 0.158);
+            color:#636dff;
             border-radius:3px;
         }
         button.active{
-        background-color: #636dff;
-        color:white;
+        background-color: $black;
+        color:$soft-white;
         }
         button.disabled{
-        background-color: rgba(255,255,255, 0.4);
+        background-color: rgba(255,255,255, 0.6);
         color:white;
         }
     }

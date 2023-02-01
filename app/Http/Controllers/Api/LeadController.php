@@ -20,6 +20,7 @@ class LeadController extends Controller
             //faccio la validazione
             'name'=>'required|min:2',
             'email'=>'required|min:5',
+            'object'=>'required|min:5',
             'message'=>'required|min:2'
         ],
         [
@@ -30,6 +31,8 @@ class LeadController extends Controller
             'name.min'=>'Il nome deve avere almeno :min caratteri',
             'email.min'=>'L\'email deve avere almeno :min caratteri',
             'message.min'=>'Il messaggio deve avere almeno :min caratteri',
+            'object.required'=>'L\'oggetto è un campo obbligatorio',
+            'object.min'=>'L\'oggetto deve avere almeno :min caratteri',
         ]
         );
         if($validator->fails()){

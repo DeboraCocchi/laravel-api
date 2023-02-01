@@ -35,7 +35,7 @@ export default {
 <template>
     <div class="form-search input-group">
         <input type="text" placeholder="Cerca..." class="form-control" v-model="this.tosearch" @keyup.enter="getApi" >
-    <button class="btn btn-outline-warning text-black" @click="getApi">Invia</button>
+    <button class="btn btn-outline-warning text-black bg-warning" @click="getApi">Invia</button>
     </div>
 
 </template>
@@ -45,8 +45,6 @@ export default {
     .form-search.input-group{
         width:300px;
         height: 40px;;
-        &:focus{
-            color:purple;
-        }
+
     }
 </style>
