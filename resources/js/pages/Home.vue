@@ -113,7 +113,7 @@ export default {
         <h2 class="mt-4">Una situazione allarmante</h2>
         <p class="">l’Università di Harvard ha diffuso dei dati molto preoccupanti: i ricercatori hanno infatti calcolato che <strong>la scomparsa totale degli impollinatori potrebbe portare a un aumento di quasi il 3% della mortalità globale.</strong> <br>La riduzione consistente della produzione globale di frutta, verdura e semi (rispettivamente 22,9%, 16,3% e 22,9%) potrebbe infatti determinare una carenza degli apporti vitaminici fondamentali, soprattutto per quelle popolazioni che già hanno un’alimentazione inadeguata, causando un aumento delle malattie legate alla malnutrizione.</p>
         <br>
-        <p class="pb-2">Il ruolo delle api negli ecosistemi, dunque, è di gran lunga superiore al valore stesso della produzione di miele: con il meccanismo stesso dell’impollinazione sono in gioco la qualità e la quantità stessa di cibo che il pianeta riuscirà a produrre in futuro.</p>
+        <p class="pb-2">Il ruolo delle api negli ecosistemi, dunque, è di gran lunga superiore al valore stesso della produzione di miele: dal meccanismo dell’impollinazione dipendono strettamente la qualità e la quantità di cibo che il pianeta riuscirà a produrre in futuro.</p>
     </section>
 
     <section class="stripes">
