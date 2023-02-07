@@ -19,6 +19,7 @@ export default {
 <div class="dc-card my-3 p-0">
     <router-link :to="{name: 'project-detail', params:{ slug: project.slug} }">
         <div class="content-card h-100 w-100">
+            <span class="type badge text-bg-dark">{{project.type.name}}</span>
             <img :src="project.cover_image" class="card-img-top" :alt="project.image_original_name">
             <div class="card-body">
                 <h4 class="card-title mb-1 text-black">{{project.name}}</h4>
@@ -47,7 +48,13 @@ export default {
     }
     .content-card{
       background-color:aliceblue;
+      position:relative;
       border-radius:0.8rem;
+      span.type{
+          position:absolute;
+          left:5px;
+          top:5px;
+      }
       .card-body{
         text-align: center;
         padding:20px;

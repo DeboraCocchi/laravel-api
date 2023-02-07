@@ -3,7 +3,7 @@
 
 html {
     scroll-behavior: smooth;
-    & *:not(a, router-link, input ){
+    & *:not(a, input, .form-check, .form-label){
         cursor:url('/img/api/cursor.png'), pointer;
     }
 

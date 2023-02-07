@@ -39,7 +39,11 @@ class LeadController extends Controller
             $success=false;
             $errors=$validator->errors();
             return response()->json(compact('success', 'errors'));
-        };
+        }else{
+            $success=true;
+            $errors=false;
+            return response()->json(compact('success', 'errors'));
+        }
 
          //salvare i dati nel db
         $new_lead=new Lead();

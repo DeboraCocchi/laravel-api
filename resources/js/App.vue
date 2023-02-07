@@ -7,7 +7,7 @@ export default {
     name:'App',
     data(){
         return{
-        baseUrl:'http://127.0.0.1:8002/api/projects',
+        baseUrl:'http://127.0.0.1:8001/api/projects',
         projects_collection:[]
         }
     },

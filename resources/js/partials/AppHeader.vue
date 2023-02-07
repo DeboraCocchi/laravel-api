@@ -53,39 +53,46 @@ export default {
       ul{
         list-style:none;
         display:inline-block;
-        a{
+        li{
+        //   &::after{
+        //     content:'';
+        //     border-bottom:2px solid $yellow-darker;
+        //     padding:0 10px;
+        //     position:absolute;
+        //     bottom:0;
+        //     right:0;
+        //     left:0;
+        //     margin:0 auto;
+        //     width:0;
+        //     transition:all .3s ease-in-out;
+        //     }
+            // &::after a:hover{
+            //     width:100%;
+            //     padding:0;
+            //     border-bottom:2px solid $yellow-darker;
+            //     }
+            // &::after a.active,  &::after a:active{
+            //     width:100%;
+            //     padding:0;
+            //     border-bottom:2px solid $yellow-darker;
+            // }
+         a{
             color:$black;
             text-transform: uppercase;
             font-weight: bold;
             display: block;
-          &::after{
-            content:'';
-            border-bottom:2px solid aqua;
-            padding:0 10px;
-            position:absolute;
-            bottom:0;
-            right:0;
-            left:0;
-            margin:0 auto;
-            width:0;
-            transition:all .3s ease-in-out;
-        }
-        &:hover ,  &:active , &.active {
+             &:hover ,  &:active , &.active {
             color:$yellow-darker;
-        }
-        &:hover::after{
-            width:100%;
-            padding:0;
-            border-bottom:2px solid $yellow-darker;
-        }
-        &:active::after, &.active::after{
-            width:100%;
-            padding:0;
-            border-bottom:2px solid $yellow-darker;
-        }
+                }
+            // &::after:hover{
+            //     width:100%;
+            //     padding:0;
+            //     border-bottom:2px solid $yellow-darker;
+            //     }
 
+            }
 
-      }}
+            }}
     }
   }
 </style>

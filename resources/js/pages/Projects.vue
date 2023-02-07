@@ -1,11 +1,14 @@
 <script>
 import axios from 'axios'
-import {apiUrl, showPaginator} from '../data/data'
+import {apiUrl} from '../data/data'
 import {store} from '../data/store'
 import FormSearch from '../components/FormSearch.vue'
 import ProjectCard from '../components/ProjectCard.vue'
 export default {
     name:'Projects',
+    props: {
+    results: Number
+    },
     components:{
     FormSearch,
     ProjectCard
@@ -14,55 +17,35 @@ export default {
         return{
             apiUrl,
             store,
-            showPaginator,
-            pagination:{
-                current:1,
-                last:1,
-                per_page:10,
-                stored:0
-            },
-
-
         }
     },
     methods:{
+        getApi(){
+            store.selected=''
+            store.tosearch=''
+            axios.get(apiUrl)
+            .then(result =>{
 
-        getProjects(page){
-            this.pagination.current = page
-            axios.get(apiUrl,{
-                params:{
-                    page: this.pagination.current
-                }
-            })
-        .then(result =>{
-            store.projects= result.data.projects.data;
-                this.pagination.current=result.data.projects.current_page;
-                this.pagination.per_page=result.data.projects.per_page
-                let difference= result.data.projects.total / result.data.projects.per_page
-                if(!difference % 2){
-                    this.pagination.last=difference+1
-                }else{
-                    this.pagination.last=difference
-                }
-                if(this.pagination.current>this.pagination.last){
-                    this.pagination.current=this.pagination.last
-                }
-
-                console.log(this.pagination.stored,this.pagination.per_page);
-        })
-        .catch( err=>{
-            console.log('Si è verificato un errore');
-        })
-        },
-  },
-    mounted(){
-        this.getProjects(1);
-        this.showPaginator = true;
-
+                store.projects= result.data.projects.data;
+                store.types=result.data.types
+                store.technologies=result.data.technologies
+                store.pagination.current=result.data.projects.current_page;
+                store.pagination.per_page=result.data.projects.per_page
+                store.pagination.last=result.data.projects.last_page
+                store.pagination.total=result.data.projects.total
+                    if(store.pagination.current>store.pagination.last){
+                        store.pagination.current=store.pagination.last
+                    }
+                })
+                .catch(err =>{
+                    console.log('Si è verificato un errore');
+                })
+    }
     },
-   created(){
-       console.log(store.projects.length);
-    // setInterval(function() {console.log(store.projects.length)}, 1000);
+
+    mounted(){
+        this.getApi()
+
     }
 }
 </script>
@@ -73,10 +56,13 @@ export default {
         <div class="container-fluid mb-5 p-0">
             <div class="d-flex justify-content-between dc-black-bg pe-5">
                 <h1 class="ms-4">I miei progetti</h1>
-                <FormSearch />
+                <FormSearch @regenerate="getApi" @total="()=> store.pagination.total"/>
             </div>
 
             <div class="row justify-content-between px-5 py-4">
+                <div class="alert alert-warning" role="alert">
+                La ricerca comprende {{store.pagination.total}} risultati
+                </div>
                 <ProjectCard v-for="project in store.projects" :project="project" :key="project.id"></ProjectCard>
 
 
@@ -84,22 +70,22 @@ export default {
                     <div class="pagination d-flex justify-content-end mt-3"
                     v-show="!store.projects.length < 10">
                         <button class="page-link btn" aria-label="Previous"
-                            :class="{disabled: (pagination.current ===1)}"
-                            @click="getProjects(pagination.current - 1)">
+                            :class="{disabled: (store.pagination.current ===1)}"
+                            @click="store.pagination.current = store.pagination.current - 1">
                             <span aria-hidden="true">&laquo;</span>
                         </button>
 
                         <button class="page-link"
-                            v-for="i in pagination.last" :key=i
-                            @click="getProjects(i)"
-                            :class="{active: (pagination.current === i)}"
+                            v-for="i in store.pagination.last" :key=i
+                            @click="store.pagination.current = i"
+                            :class="{active: (store.pagination.current === i)}"
                             >{{i}}
                         </button>
 
                         <button class="page-link"
                             aria-label="Next"
-                            :class="{disabled: (pagination.current ===pagination.last)}"
-                            @click="getProjects(page= pagination.current + 1)">
+                            :class="{disabled: (store.pagination.current ===store.pagination.last)}"
+                            @click="store.pagination.current = store.pagination.current + 1">
                             <span aria-hidden="true">&raquo;</span>
                         </button>
                     </div>

@@ -64,10 +64,10 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-5">
+                    <div class="col-4">
                         <img :src="project.cover_image" :alt="project.name">
                     </div>
-                    <div class="col-6 ms-3 mt-3">
+                    <div class="col-7 ms-3 mt-3">
                         <h2><span class="purple me-3">Title: </span>{{project.name}}</h2>
                         <span v-if="project.type" class="badge text-bg-warning  d-inline-block mb-3">{{project.type.name}}</span>
 
@@ -123,9 +123,11 @@
         padding:20px;
         border-radius:0.8rem;
         width:70%;
+        height:70vh;
+        padding:30px;
         margin:40px auto;
     .col-8 span, .col-8 p{
-        font-size:110%;
+        font-size:90%;
     }
         }
     .purple{
@@ -143,12 +145,19 @@
             }
         }
     img{
-        min-height: 400px;
+        max-height: 400px;
         width:auto;
         max-width: 100%;
         object-fit: cover;
         margin:10px;
         border-radius:0.8rem;
+        }
+        h1{
+            font-size:1.6rem;
+            margin-top:0;
+        }
+        .col-7 *{
+            font-size:90%;
         }
     }
 

@@ -2,20 +2,20 @@
     <footer>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-4 p-2">
+                <div class="col-4 p-1">
                     <p class="p-1">
                         Tutti i contenuti testuali di questa pagina sono tratti dal sito del FAI -  FONDO PER L'AMBIENTE ITALIANO ETS - Via Carlo Foldi, 2 - 20135 Milano
                     </p>
                 </div>
-                <div class="col-4">
+                <div class="col-4 p-1">
                     <div class="p-2 text-center">
                         <h6 class="whitey">Visita il sito del FAI per scoprire come difendere le api</h6>
-                    <a href="https://fondoambiente.it/il-fai/il-fai-che-vigila/salvailsuolo/le-api/" target="_blank" class="btn btn-warning">Vail al sito</a>
+
                     </div>
 
                 </div>
-                <div class="col-4">
-
+                <div class="col-4 p-1 text-center">
+                    <a href="https://fondoambiente.it/il-fai/il-fai-che-vigila/salvailsuolo/le-api/" target="_blank" class="btn btn-warning">Vail al sito</a>
                 </div>
 
             </div>
@@ -57,8 +57,11 @@ export default {
         background-color: $black;
         color:$yellow-lighter;
         .col-4{
-            p{
-                font-size:90%;
+            p, h6{
+                font-size:70%;
+            }
+            a{
+                height:40px;
             }
         }
     }
